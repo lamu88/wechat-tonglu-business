@@ -36,8 +36,7 @@
  *
  * @global string $cfg['PmaAbsoluteUri']
  */
-$pmastr = '/phpMyAdmin'
-$cfg['PmaAbsoluteUri'] = "$OPENSHIFT_APP_DNS.$pmastr";
+$cfg['PmaAbsoluteUri'] = '<%= ENV['OPENSHIFT_APP_DNS'] %>/phpMyAdmin/';
 
 /**
  * Disable the default warning that is displayed on the DB Details Structure page if
@@ -85,7 +84,7 @@ $cfg['AllowThirdPartyFraming'] = false;
  *
  * @global string $cfg['blowfish_secret']
  */
-$cfg['blowfish_secret'] = '';
+$cfg['blowfish_secret'] = 'www.phpstudy.net';
 
 
 /*******************************************************************************
@@ -108,7 +107,7 @@ $i = 1;
  *
  * @global string $cfg['Servers'][$i]['host']
  */
-$cfg['Servers'][$i]['host'] = "$OPENSHIFT_MYSQL_DB_HOST";
+$cfg['Servers'][$i]['host'] = '<%= ENV['OPENSHIFT_MYSQL_DB_HOST'] %>';
 
 /**
  * MySQL port - leave blank for default port
@@ -184,7 +183,7 @@ $cfg['Servers'][$i]['controlpass'] = '';
  *
  * @global string $cfg['Servers'][$i]['auth_type']
  */
-$cfg['Servers'][$i]['auth_type'] = 'config';
+$cfg['Servers'][$i]['auth_type'] = 'cookie';
 
 /**
  * HTTP Basic Auth Realm name to display (only used with 'HTTP' auth_type)
@@ -206,14 +205,14 @@ $cfg['Servers'][$i]['auth_swekey_config'] = '';
  *
  * @global string $cfg['Servers'][$i]['user']
  */
-$cfg['Servers'][$i]['user'] = "$OPENSHIFT_MYSQL_DB_USERNAME";
+$cfg['Servers'][$i]['user'] = '';
 
 /**
  * MySQL password (only needed with 'config' auth_type)
  *
  * @global string $cfg['Servers'][$i]['password']
  */
-$cfg['Servers'][$i]['password'] = "$OPENSHIFT_MYSQL_DB_PASSWORD";
+$cfg['Servers'][$i]['password'] = '';
 
 /**
  * Session to use for 'signon' authentication method
@@ -550,7 +549,11 @@ $cfg['AjaxEnable'] = true;
  *
  * @global boolean $cfg['VersionCheck']
  */
-$cfg['VersionCheck'] = VERSION_CHECK_DEFAULT;
+if (defined('VERSION_CHECK_DEFAULT')) {
+    $cfg['VersionCheck'] = VERSION_CHECK_DEFAULT;
+} else {
+    $cfg['VersionCheck'] = true;
+}
 
 /**
  * maximum number of db's displayed in left frame and database list
@@ -1140,7 +1143,6 @@ $cfg['PropertiesNumColumns'] = 1;
  * 'server_status.php' = runtime information
  * 'server_variables.php' = MySQL server variables
  * 'server_privileges.php' = user management
- * 'server_processlist.php' = process list
  *
  * @global string $cfg['DefaultTabServer']
  */

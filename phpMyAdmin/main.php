@@ -234,14 +234,14 @@ if ($GLOBALS['cfg']['VersionCheck'] && (! $GLOBALS['PMA_Config']->get('is_https'
     $class = 'jsversioncheck';
 }
 PMA_printListItem(__('Version information') . ': ' . PMA_VERSION, 'li_pma_version', null, null, null, null, $class);
-PMA_printListItem(__('Documentation'), 'li_pma_docs', 'Documentation.html', null, '_blank');
+PMA_printListItem(__('phpStudy 2014'), 'phpStudy 2014', 'http://www.phpstudy.net/', null, '_blank');
 PMA_printListItem(__('Wiki'), 'li_pma_wiki', PMA_linkURL('http://wiki.phpmyadmin.net/'), null, '_blank');
 
 // does not work if no target specified, don't know why
 PMA_printListItem(__('Official Homepage'), 'li_pma_homepage', PMA_linkURL('http://www.phpMyAdmin.net/'), null, '_blank');
-PMA_printListItem(__('Contribute'), 'li_pma_contribute', PMA_linkURL('http://www.phpmyadmin.net/home_page/improve.php'), null, '_blank');
+
 PMA_printListItem(__('Get support'), 'li_pma_support', PMA_linkURL('http://www.phpmyadmin.net/home_page/support.php'), null, '_blank');
-PMA_printListItem(__('List of changes'), 'li_pma_changes', PMA_linkURL('changelog.php'), null, '_blank');
+
 ?>
     </ul>
  </div>
@@ -323,9 +323,9 @@ if ($server > 0) {
         $message->addParam('</a>', false);
         /* Show error if user has configured something, notice elsewhere */
         if (!empty($cfg['Servers'][$server]['pmadb'])) {
-            $message->isError(true);
+           // $message->isError(true);
         }
-        $message->display();
+       // $message->display();
     } // end if
 }
 

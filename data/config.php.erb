@@ -1,0 +1,13 @@
+<?php
+date_default_timezone_set('Asia/Shanghai');
+// host $OPENSHIFT_MYSQL_DB_HOST:3306
+$db_host   = '<%= ENV['OPENSHIFT_MYSQL_DB_HOST'] %>';
+// database name   
+$db_name   = '<%= ENV['OPENSHIFT_APP_NAME'] %>';
+// database username
+$db_user   = '<%= ENV['OPENSHIFT_MYSQL_DB_USERNAME'] %>'; 
+// database password
+$db_pass   = '<%= ENV['OPENSHIFT_MYSQL_DB_PASSWORD'] %>'; 
+
+$prefix    = "gz_";
+?>
